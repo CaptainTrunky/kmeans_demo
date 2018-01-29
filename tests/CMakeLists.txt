@@ -1,12 +1,11 @@
 cmake_minimum_required (VERSION 3.10)
 
-project (kmeans)
+project (tests)
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
-find_package(Boost)
+find_package(Boost 1.63 COMPONENTS unit_test_framework REQUIRED)
+
 if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
 else()
@@ -20,8 +19,10 @@ set ( CMAKE_CXX_FLAGS "-std=c++1z -Werror -Wall -Wextra -Wpedantic -Wcast-align 
     -Wsign-conversion -Wsign-promo -Wno-unused-function"
 )
 
-add_subdirectory(tests)
-
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-add_executable(kmeans src/main.cpp)
+add_executable(tests main.cpp)
+
+if(Boost_FOUND)
+  target_link_libraries(tests ${Boost_LIBRARIES})
+endif()
