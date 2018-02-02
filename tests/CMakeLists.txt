@@ -19,9 +19,13 @@ set ( CMAKE_CXX_FLAGS "-std=c++1z -Werror -Wall -Wextra -Wpedantic -Wcast-align 
     -Wsign-conversion -Wsign-promo -Wno-unused-function"
 )
 
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include" "${CMAKE_CURRENT_SOURCE_DIR}/../include")
+
+link_directories("${CMAKE_CURRENT_SOURCE_DIR}/../lib")
 
 add_executable(tests main.cpp)
+
+target_link_libraries(tests kmeans)
 
 if(Boost_FOUND)
   target_link_libraries(tests ${Boost_LIBRARIES})

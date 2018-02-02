@@ -9,6 +9,7 @@
 #define INCLUDE_TYPES_H_
 
 #include <boost/numeric/ublas/matrix.hpp>
+#include <boost/numeric/ublas/matrix_proxy.hpp>
 #include <boost/numeric/ublas/vector.hpp>
 
 namespace Types {
