@@ -10,10 +10,6 @@
 
 #include "types.h"
 
-namespace ublas = boost::numeric::ublas;
-
-#include <boost/numeric/ublas/io.hpp>
-
 class KMeans {
   public:
     KMeans() = default;
@@ -37,13 +33,6 @@ class KMeans {
     Types::Points _centroids;
 
     void _initialize(const Types::Points& ps, const size_t clusters_num, const size_t iters=1000);
-
-  public:
-    ublas::matrix_row<Types::Points> _pick_random_point(const Types::Points& ps) const;
-    ublas::matrix_row<Types::Points> _get_point(const size_t idx, const Types::Points& ps) const;
-
-    Types::CoordType _distance_between_two_points(const Types::Point& p1, const Types::Point& p2) const;
-    Types::CoordType _distance_from_point(const size_t idx, const Types::Points& p) const;
 };
 
 #endif /* INCLUDE_KMEANS_H_ */

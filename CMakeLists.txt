@@ -26,4 +26,4 @@ add_subdirectory(tests)
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-add_library(kmeans STATIC src/kmeans.cpp)
+add_library(kmeans STATIC src/geometry.cpp src/kmeans.cpp)
