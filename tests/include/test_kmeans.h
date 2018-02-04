@@ -25,8 +25,10 @@ BOOST_AUTO_TEST_CASE( test_kmeans_initialization ) {
 
   const auto mu = kmeans.mu();
 
-  std::cout <<  mu << '\n';
-
   BOOST_CHECK_EQUAL(mu.size1(), 2);
   BOOST_CHECK_EQUAL(mu.size2(), 2);
+
+  for(const auto val: mu.data()) {
+    BOOST_CHECK_EQUAL(false, std::isnan(val));
+  }
 }
