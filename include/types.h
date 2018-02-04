@@ -15,8 +15,17 @@
 namespace Types {
   using CoordType = double;
 
-  using Point = boost::numeric::ublas::vector<CoordType>;
-  using Points = boost::numeric::ublas::matrix<CoordType>;
+  using Vector = boost::numeric::ublas::vector<CoordType>;
+  using Point = Vector;
+
+  using Matrix = boost::numeric::ublas::matrix<CoordType>;
+  using Points = Matrix;
+
+  using Row = boost::numeric::ublas::matrix_row<Types::Points>;
+  using RowConst = boost::numeric::ublas::matrix_row<const Types::Points>;
+
+  using Column = boost::numeric::ublas::matrix_column<Types::Points>;
+  using ColumnConst = boost::numeric::ublas::matrix_column<const Types::Points>;
 }
 
 #endif /* INCLUDE_TYPES_H_ */

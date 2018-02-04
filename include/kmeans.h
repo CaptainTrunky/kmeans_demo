@@ -15,24 +15,25 @@ class KMeans {
     KMeans() = default;
     ~KMeans() = default;
 
-    void initialize(const Types::Points& ps);
+    void initialize(const Types::Points& ps, const size_t cluster_num);
 
     // let's follow sklearn naming
     void fit(const Types::Points& ps, const size_t clusters_num, const size_t iters=1000);
     void transform(const Types::Points& ps) const;
 
-    const Types::Points& centroids() const {
-      return _centroids;
+    const Types::Points& mu() const {
+      return _mu;
     }
 
-    Types::Points& centroids() {
-      return _centroids;
+    Types::Points& mu() {
+      return _mu;
     }
 
   private:
-    Types::Points _centroids;
+    Types::Points _mu;
 
-    void _initialize(const Types::Points& ps, const size_t clusters_num, const size_t iters=1000);
+    void _initialize(const Types::Points& ps, const size_t clusters_num);
+    Types::Vector _compute_weights(const size_t iter, const Types::Points& ps) const;
 };
 
 #endif /* INCLUDE_KMEANS_H_ */
