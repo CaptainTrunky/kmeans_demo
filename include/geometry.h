@@ -15,18 +15,42 @@
 namespace ublas = boost::numeric::ublas;
 
 namespace Geometry {
+  //! Introduces directions for 2D matrices
   enum AXIS {
     ROW = 0,
     COLUMN = 1,
     AXIS_NUM = 2
   };
 
+  //! Returns a random point represented by a row from a matrix.
+  /*!
+    \param [in] ps A set of points.
+    \return A point.
+  */
   Types::RowConst pick_random_point(const Types::Points& ps);
+
+  //! Returns a random point represented by a row from a matrix.
+  /*!
+    \param [in] ps A set of points.
+    \param [in] weights Defines probabilities distribution for picking a point.
+    \return A point.
+  */
   Types::RowConst pick_random_point_with_discrete_distr(const Types::Points& ps, const Types::Vector& weights);
 
+  //! Gets a point from a matrix
+  /*!
+    \param [in] idx A point's index.
+    \param [in] ps A set of points
+    \return A point.
+  */
   Types::RowConst get_point(const size_t idx, const Types::Points& ps);
 
-  // 0 - rows, 1 - columns
+  //! Computes L2-norm along specified axis.
+  /*!
+    \param [in] m An input matrix.
+    \param [in] axis Axis for computing norm (default = AXIS::ROW).
+    \return A vector of norms.
+  */
   Types::Vector compute_norm_along_axis(const Types::Matrix& m, const AXIS axis = AXIS::ROW);
 
   Types::CoordType distance_between_two_points(const Types::Point& p1, const Types::Point& p2);
