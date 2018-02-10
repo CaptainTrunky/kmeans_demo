@@ -53,8 +53,28 @@ namespace Geometry {
   */
   Types::Vector compute_norm_along_axis(const Types::Matrix& m, const AXIS axis = AXIS::ROW);
 
+  //! Computes Euclidian distance between two points.
+  /*!
+    \param [in] p1 First point.
+    \param [in] p2 Second point.
+    \return Distance between two points of type CoordType.
+  */
   Types::CoordType distance_between_two_points(const Types::Point& p1, const Types::Point& p2);
+
+  //! Computes Euclidian distance between single point and set of points.
+  /*!
+    \param [in] p1 A point.
+    \param [in] ps A set of points.
+    \return A vector of distances.
+  */
   Types::Vector compute_distance_to_points(const Types::Point& p, const Types::Points& ps);
+
+  //! Computes total Euclidian distance between single point and set of points.
+  /*!
+    \param [in] p1 A point.
+    \param [in] ps A set of points.
+    \return Total distance.
+  */
   Types::CoordType total_distance_from_point(const Types::Point& p, const Types::Points& ps);
 }
 
